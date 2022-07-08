@@ -1,4 +1,4 @@
-from keras.preprocessing.text import Tokenizer
+
 from keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
