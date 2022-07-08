@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!--Mapbox cdn-->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Frontend Bootcamp</title>
+</head>
+
+<body>
+    <!--nav.navbar. (navbar class) navbar-expand-lg (how it will appear as browser shape changes).bg-dark(select color).navbar-dark(as color is dark font color changes)-->
+    <!--Fixed top so that it will stay at top-->
+    <nav class="navbar navbar-expand-lg bg-black navbar-dark fixed-top">
+        <!--a.navbar-brand-->
+        <!--.container-->
+        <!--We add container so that we don't need to add padding manually-->
+        <!--Use alt + arrow to move lines-->
+        <div class="container">
+            <!--Brand name-->
+            <a href="#" class="navbar-brand">SPAM!! or not??</a>
+            <!-- WE careate a button that you will press in smaller screen so that it will uncollapse -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--Be we want it to be able to collapse when screen size changes-->
+            <div class="collapse navbar-collapse" id="navmenu">
+
+                <!--Add unlisted class of navigation link list-->
+                <!--Ms-auto to add margin-->
+                <ul class="navbar-nav ms-auto">
+                    <!--Add list of links-->
+                    <!--Shift + Alt Up + down -->
+                    <li class="nav-item">
+                        <a href="#learn" class="nav-link">What you will</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#questions" class="nav-link">Questions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instructors" class="nav-link">Instructors</a>
+                    </li>
+                    <!--Add links-->
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <!--Showcase -->
+    <!--p-5 to add padding all around (you can also do py to add padding in y axis)-->
+    <!--text-center to align text in center-->
+    <!--text-sm-start so that it will be left align when using larger screen-->
+    <section class="bg-dark text-light p-5 text-center text-sm-start">
+        <!-- You don't want container section in container as you want it all to be dark-->
+        <div class="container">
+            <!-- WE just want to add two flex items in class first "text" second "image" side by side-->
+            <!--WE convet it into flexbox by using "d-flex"-->
+            <!--d-sm-flex we don't want flexbox active in smaller mobile screen so we add sm-->
+            <!--we use align items cneter to align items in ceter-->
+            <!--helps distribute extra free space leftover when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size.-->
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <!--We added two items -->
+                <div>
+                    <!--We use span class to make Web Developer yellow-->
+                    <h1>Become a <span class="text-warning">
+                            Web Developer
+                        </span> </h1>
+                    <!--WE added text and we use attribut called "lead" to make text bigger-->
+                    <!--my-4 to add margin in y axis-->
+                    <p class="lead my-4">
+                        We focus on teaching our students the fundamentals of the latest
+                        and greatest technologies to prepare them for their first dev role
+                    </p>
+                    <!--WE add button primary makes color, btn lg makes it large-->
+                    <!--We use data-bs-toggle (we earlier used it in collapse) now we use it as in modal-->
+                    <!--We use data-bs-target to set target-->
+                    <button 
+                        class="btn btn-primary btn-lg" 
+                        data-bs-toggle ="modal" 
+                        data-bs-target="#enroll">
+
+                        Start The Enrollment
+                    </button>
+                </div>
+                <div>
+                    <!--d-none d-sm-block we use it so that site is still responsive in smaller screen-->
+                    <!--We want image to be responsive as we change screen size so we add img-fluid and w-50 halves it's size-->
+                    <img class="img-fluid w-60 d-none d-sm-block" src="{{ url_for('static',filename='img/showcase.svg') }}" alt="imgae of web developer">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--Newsletter-->
+    <section class="bg-primary text-light p-5">
+        <div class="container">
+            <!--We use flexbox, d-md-flex (we don't want flexbox to kick in until it is medium screen size)-->
+            <!--Justify content between, distribute extra space between-->
+            <!--Align items center use to align items in ceter-->
+            <div class="d-md-flex justify-content-between align-items-center">
+                <!--Margin bottom 3-->
+                <!--We don't want margin for medium screens so mb-md-0 (margin for medium screen =0)-->
+                <h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
+                <!--We copy pasted "input types from documenation", we change btn-color and btn-size-->
+                <!--news-input class edited in custom css-->
+                <form class="input-group news-input " method="POST" action="/sub">
+                    <input type="text" class="form-control" placeholder="Enter Email" name="strings">
+                    <input class="btn btn-dark btn-lg" type="submit"></input>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--Boxes-->
+    <section class="p-5">
+        <!--We use css grids so basically we create a row and then we add 3 columns-->
+        <!--col-md means columns added in medium screens and up and stacks on small screens-->
+        <!--We add "cards from documentaions"-->
+        <div class="container">
+            <!--g-4 adds gap all around-->
+            <div class="row text-center g-4">
+                <!--WE add card by card class and card body-->
+                <div class="col-md">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                            <!--Icon element bi(bootstrap icon)-->
+                            <!--We change size of it by wrapping in h1 class-->
+                            <div class="h1 mb-3">
+                                <i class="bi bi-laptop"></i>
+                            </div>
+                            <!--WE add heading in card-->
+                            <h3 class="card-title mb-3">Virtual</h3>
+                            <!--WE add text in card-->
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate earum maxime
+                                officiis odio? Quibusdam, autem!
+                            </p>
+                            <!--We add button -->
+                            <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-secondary text-light">
+                        <div class="card-body text-center">
+                            <!--Icon element bi(bootstrap icon)-->
+                            <!--We change size of it by wrapping in h1 class-->
+                            <div class="h1 mb-3">
+                                <i class="bi bi-person-square"></i>
+                            </div>
+                            <!--WE add heading in card-->
+                            <h3 class="card-title mb-3">Hybrid</h3>
+                            <!--WE add text in card-->
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate earum maxime
+                                officiis odio? Quibusdam, autem!
+                            </p>
+                            <!--We add button -->
+                            <a href="#" class="btn btn-dark">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                            <!--Icon element bi(bootstrap icon)-->
+                            <!--We change size of it by wrapping in h1 class-->
+                            <div class="h1 mb-3">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <!--WE add heading in card-->
+                            <h3 class="card-title mb-3">In Person</h3>
+                            <!--WE add text in card-->
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate earum maxime
+                                officiis odio? Quibusdam, autem!
+                            </p>
+                            <!--We add button -->
+                            <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Learn Section-->
+    <section id="learn" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <!--md screen after that collapses-->
+                <div class="col-md">
+                    <!--Simply add responsive image-->
+                    <img src="{{ url_for('static',filename='img/fundamentals.svg') }}" class="img-fluid" alt="">
+                </div>
+                <div class="col md p-5">
+                    <!--We simply add text-->
+                    <h2>Learn The Fundamentals</h2>
+                    <p class="lead">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, laborum. Mollitia laborum enim
+                        qui officiis.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto dolore aliquid doloribus hic
+                        quaerat eligendi tempore, maxime id, repellendus nihil at saepe possimus illum neque similique,
+                        nostrum veniam perferendis ab?
+                    </p>
+                    <!--We add button-->
+                    <!--m-3 is for margin-->
+                    <a href="#" class="btn btn-light m-3">
+                        <!--Add chevron icon-->
+                        <i class="bi bi-chevron-right"></i>Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Learn section part 2-->
+    <!--We copy before section to piece together this website-->
+    <section id="learn" class="p-5 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <!--md screen after that collapses-->
+
+                <div class="col-md p-5">
+                    <!--We simply add text-->
+                    <h2>Learn React</h2>
+                    <p class="lead">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, laborum. Mollitia laborum enim
+                        qui officiis.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto dolore aliquid doloribus hic
+                        quaerat eligendi tempore, maxime id, repellendus nihil at saepe possimus illum neque similique,
+                        nostrum veniam perferendis ab?
+                    </p>
+                    <!--We add button-->
+                    <!--m-3 is for margin-->
+                    <a href="#" class="btn btn-light m-3">
+                        <!--Add chevron icon-->
+                        <i class="bi bi-chevron-right"></i>Read More
+                    </a>
+                </div>
+                <div class="col-md">
+                    <!--Simply add responsive image-->
+                    <img src="{{ url_for('static',filename='img/react.svg') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Question Accordian-->
+    <section id="questions" class="p-5">
+        <div class="container">
+            <!--Margin bottom 4-->
+            <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+            <!--We need to add "ACCORDION ITEM" just search in bootstrap documentaion-->
+            <!--We add questions id by (ctrl + d)-->
+            <div class="accordion accordion-flush" id="questions">
+                <!--Item 1-->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#question-one">
+                            Where exactly are you located?
+                        </button>
+                    </h2>
+                    <div id="question-one" class="accordion-collapse collapse" data-bs-parent="#questoins">
+                        <div class="accordion-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis,
+                            beatae voluptas et accusamus pariatur ipsam minima iure sit aut nisi dignissimos perferendis
+                            nulla officia possimus facilis inventore maxime quaerat exercitationem tempora ut voluptates
+                            architecto numquam. Consequatur accusantium rem incidunt facilis enim voluptate, similique
+                            culpa delectus, iure consectetur quibusdam provident laboriosam.
+                        </div>
+                    </div>
+                </div>
+                <!--Item 2-->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#question-two">
+                            How much does it cost to attend?
+                        </button>
+                    </h2>
+                    <div id="question-two" class="accordion-collapse collapse" data-bs-parent="#questions">
+                        <div class="accordion-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis,
+                            beatae voluptas et accusamus pariatur ipsam minima iure sit aut nisi dignissimos perferendis
+                            nulla officia possimus facilis inventore maxime quaerat exercitationem tempora ut voluptates
+                            architecto numquam. Consequatur accusantium rem incidunt facilis enim voluptate, similique
+                            culpa delectus, iure consectetur quibusdam provident laboriosam.
+                        </div>
+                    </div>
+                </div>
+                <!--Item 3-->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#question-three">
+                            What do I need to know?
+                        </button>
+                    </h2>
+                    <div id="question-three" class="accordion-collapse collapse" data-bs-parent="#questions">
+                        <div class="accordion-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis,
+                            beatae voluptas et accusamus pariatur ipsam minima iure sit aut nisi dignissimos perferendis
+                            nulla officia possimus facilis inventore maxime quaerat exercitationem tempora ut voluptates
+                            architecto numquam. Consequatur accusantium rem incidunt facilis enim voluptate, similique
+                            culpa delectus, iure consectetur quibusdam provident laboriosam.
+                        </div>
+                    </div>
+                </div>
+                <!--Item 4-->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#question-four">
+                            How do I sign up?
+                        </button>
+                    </h2>
+                    <div id="question-four" class="accordion-collapse collapse" data-bs-parent="#questions">
+                        <div class="accordion-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis,
+                            beatae voluptas et accusamus pariatur ipsam minima iure sit aut nisi dignissimos perferendis
+                            nulla officia possimus facilis inventore maxime quaerat exercitationem tempora ut voluptates
+                            architecto numquam. Consequatur accusantium rem incidunt facilis enim voluptate, similique
+                            culpa delectus, iure consectetur quibusdam provident laboriosam.
+                        </div>
+                    </div>
+                </div>
+                <!--Item 5-->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#question-five">
+                            Will you help me find a job?
+                        </button>
+                    </h2>
+                    <div id="question-five" class="accordion-collapse collapse" data-bs-parent="#questions">
+                        <div class="accordion-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis,
+                            beatae voluptas et accusamus pariatur ipsam minima iure sit aut nisi dignissimos perferendis
+                            nulla officia possimus facilis inventore maxime quaerat exercitationem tempora ut voluptates
+                            architecto numquam. Consequatur accusantium rem incidunt facilis enim voluptate, similique
+                            culpa delectus, iure consectetur quibusdam provident laboriosam.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Instructors section-->
+
+    <!--A card have card{card body {card title,card text}}-->
+    <!--P-5 is padding 5 as usual we create a section then we will add a container class-->
+    <!-- Add Always add mb=number will help to make better content-->
+    <section class="p-5 bg-primary" id="instructors">
+        <div class="container">
+            <!--We add heading in center-->
+            <h2 class="text-center text-white">
+                Our Instructors
+                <!--lead to make text bigger-->
+                <p class="lead text-center text white mb-5 mt-2">
+                    Our instructors all have 5+ years working as a web developer in the industry
+                </p>
+            </h2>
+            <!--WE know the standard we create a row-->
+            <!--We add gap of 4 all around-->
+            <div class="row g-4">
+                <!--We create columns, md-6 because we know there are 12 columns total and we need to split it in half as device screen gets smaller-->
+                <!--On large screen we want it to take 3 of the 12 columns so col-lg-3, we have basically 4 items in lame language aka 12/3-->
+
+                <!--First column-->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-light p-5">
+                        <div class="card-body text-center">
+                            <!--We use api to get random pictures of humans link/randomnumber-->
+                            <!--We use rounded circle class and give bottom margin =3-->
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3"
+                                alt="intstructor photo">
+                            <h3 class="card-title mb-3">Robi Rame</h3>
+                            <p class="card-text mb-1">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis facere hic nisi itaque
+                                dolores ab?
+                            </p>
+                            <!--We add icon by using bi (bootstrap icons) by bi-twitter -->
+                            <a href="#" class="bi bi-twitter text-dark mx-1"></a>
+                            <a href="#" class="bi bi-linkedin text-dark mx-1"></a>
+                            <a href="#" class="bi bi-facebook text-dark mx-1"></a>
+                            <a href="#" class="bi bi-instagram text-dark mx-1"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Second column-->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-light p-5">
+                        <div class="card-body text-center">
+                            <!--We use api to get random pictures of humans link/randomnumber-->
+                            <!--We use rounded circle class and give bottom margin =3-->
+                            <img src="https://randomuser.me/api/portraits/women/11.jpg" class="rounded-circle mb-3"
+                                alt="intstructor photo">
+                            <h3 class="card-title mb-3">Jane javi</h3>
+                            <p class="card-text mb-1">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis facere hic nisi itaque
+                                dolores ab?
+                            </p>
+                            <!--We add icon by using bi (bootstrap icons) by bi-twitter -->
+                            <a href="#" class="bi bi-twitter text-dark mx-1"></a>
+                            <a href="#" class="bi bi-linkedin text-dark mx-1"></a>
+                            <a href="#" class="bi bi-facebook text-dark mx-1"></a>
+                            <a href="#" class="bi bi-instagram text-dark mx-1"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Third column-->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-light p-5">
+                        <div class="card-body text-center">
+                            <!--We use api to get random pictures of humans link/randomnumber-->
+                            <!--We use rounded circle class and give bottom margin =3-->
+                            <img src="https://randomuser.me/api/portraits/women/23.jpg" class="rounded-circle mb-3"
+                                alt="intstructor photo">
+                            <h3 class="card-title mb-3">Jessy csr</h3>
+                            <p class="card-text mb-1">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis facere hic nisi itaque
+                                dolores ab?
+                            </p>
+                            <!--We add icon by using bi (bootstrap icons) by bi-twitter -->
+                            <a href="#" class="bi bi-twitter text-dark mx-1"></a>
+                            <a href="#" class="bi bi-linkedin text-dark mx-1"></a>
+                            <a href="#" class="bi bi-facebook text-dark mx-1"></a>
+                            <a href="#" class="bi bi-instagram text-dark mx-1"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Fourth column-->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-light p-5">
+                        <div class="card-body text-center">
+                            <!--We use api to get random pictures of humans link/randomnumber-->
+                            <!--We use rounded circle class and give bottom margin =3-->
+                            <img src="https://randomuser.me/api/portraits/women/13.jpg" class="rounded-circle mb-3"
+                                alt="intstructor photo">
+                            <h3 class="card-title mb-3">Jave javi</h3>
+                            <p class="card-text mb-1">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis facere hic nisi itaque
+                                dolores ab?
+                            </p>
+                            <!--We add icon by using bi (bootstrap icons) by bi-twitter -->
+                            <a href="#" class="bi bi-twitter text-dark mx-1"></a>
+                            <a href="#" class="bi bi-linkedin text-dark mx-1"></a>
+                            <a href="#" class="bi bi-facebook text-dark mx-1"></a>
+                            <a href="#" class="bi bi-instagram text-dark mx-1"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Contact and Map-->
+
+    <!--Classic we make a section with padding 5-->
+    <section class="p-5">
+        <div class="container">
+            <!--We create 3 column items with gap in between-->
+            <div class="row g-4">
+
+                <!--Item 1 (information)-->
+                <div class="col-md">
+                    <!--Classic mb-4 (for margin at bottom 4) and text-center for center text-->
+                    <h2 class="text-center mb-4">Contact Info</h2>
+                    <!--We find list item in bootstrap documentation-->
+                    <!--Add .list-group-flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container-->
+                    <!--We add lead to make text bigger-->
+                    <ul class="list-group list-group-flush lead">
+                        <!--We want it to be bold so we use span and use fw-bold and outside the span we put:-->
+                        <li class="list-group-item">
+                            <span class="fw-bold">Main Location:</span> 50 Main st Boston MA
+                        </li>
+                        <li class="list-group-item">
+                            <span class="fw-bold">Enrollemnt Phone:</span> (555) 555-5555
+                        </li>
+                        <li class="list-group-item">
+                            <span class="fw-bold">Student Phone:</span> (333) 333-3333
+                        </li>
+                        <li class="list-group-item">
+                            <span class="fw-bold">Enrollemnt Email:</span> (555) enroll@frontendbc.test
+                        </li>
+                        <li class="list-group-item">
+                            <span class="fw-bold">Student Email</span> student@frontendbc.test
+                        </li>
+                    </ul>
+                </div>
+
+                <!--Item 2 (map)-->
+                <div class="col-md">
+                    <div id='map'></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--Footer-->
+
+    <!--Class padding then background then text color and identation-->
+    <!--We use position relative class becaues we want to have go back up button-->
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+        <div class="container">
+            <!--Copyright-->
+            <!-- we use (&given-HTML-symbol-code;)-->
+            <p class="lead">Copyright &copy; 2021 Frontend Bootcamp
+
+                <!--We want it to go up button -->
+                <!--We use botton 0 and end 0 to make it at last of document-->
+                <a href="#" class="position-absolute bottom-0 end-0 p-5">
+
+                    <!--The combination of Position relative in parent and position absolute in child is used so that we can 
+                    adjust postion of child in parent then use bottom-0 and end-0 to postion it -->
+                    <i class="bi bi-arrow-up-circle h1"></i>
+                </a>
+            </p>
+
+
+        </div>
+    </footer>
+
+<!--MODAL (button )-->
+    <!-- Modal -->
+<div class="modal fade" id="enroll" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-bs-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--Javascript animation functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <!--Mapbox-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+    <!--We edit the zoom and center( location of the point we want to show in map)-->
+
+    <script>
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoiZmF5ZXMyODcxMyIsImEiOiJja3c5NjZsdHgyeG14Mm9yb3MwcnI1MG02In0.cUAmResLTc-112acRSMUqg';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 9 // starting zoom
+        });
+    </script>
+</body>
+<!--General structure is that you will devide sections and add container within-->
+<!--Row (col,col,col) structure is used frequently-->
+
+</html>
