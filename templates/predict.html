@@ -58,57 +58,70 @@
     <!--p-5 to add padding all around (you can also do py to add padding in y axis)-->
     <!--text-center to align text in center-->
     <!--text-sm-start so that it will be left align when using larger screen-->
-    <section class="bg-dark text-light p-5 text-center text-sm-start">
-        <!-- You don't want container section in container as you want it all to be dark-->
+    
+    {% if n > 0.5 %}
+    <section id="learn" class="p-5 bg-danger text-light">
         <div class="container">
-            <!-- WE just want to add two flex items in class first "text" second "image" side by side-->
-            <!--WE convet it into flexbox by using "d-flex"-->
-            <!--d-sm-flex we don't want flexbox active in smaller mobile screen so we add sm-->
-            <!--we use align items cneter to align items in ceter-->
-            <!--helps distribute extra free space leftover when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size.-->
-            <div class="d-sm-flex align-items-center justify-content-between">
-                <!--We added two items -->
-                <div>
-                    <!--We use span class to make Web Developer yellow-->
-                    <h1>Identify A <span class="text-warning">
-                            SPAM
-                        </span> </h1>
-                    <!--WE added text and we use attribut called "lead" to make text bigger-->
-                    <!--my-4 to add margin in y axis-->
-                    <p class="lead my-4">
-                        Enter a spam message in given <span class="text-warning"> text box </span> below
-                        It will detect whether a email is spam or not. You can also choose
-                        to enter message from a text box below.
-                    </p>
-                    <!--WE add button primary makes color, btn lg makes it large-->
-                    <!--We use data-bs-toggle (we earlier used it in collapse) now we use it as in modal-->
-                    <!--We use data-bs-target to set target-->
-                    <!-- <button 
-                        class="btn btn-primary btn-lg" 
-                        data-bs-toggle ="modal" 
-                        data-bs-target="#enroll">
+            <div class="row align-items-center justify-content-between">
+                <!--md screen after that collapses-->
 
-                        Start The Enrollment
-                    </button> -->
+                <div class="col-md p-5">
+                    <!--We simply add text-->
+                    <h2>SPAM</h2>
+                    <p class="lead">
+                        Model predicts that there is <span class="text-warning fw-bold"> {{n[0][0]}}</span>  precent chance that the previously 
+                        entered message is a spam.
+                        
+                    </p>
+                    <p>
+                        Spam is any kind of unwanted, unsolicited digital communication that gets sent out in bulk.
+                       
+                    </p>
+                    
                 </div>
-                <div>
-                    <!--d-none d-sm-block we use it so that site is still responsive in smaller screen-->
-                    <!--We want image to be responsive as we change screen size so we add img-fluid and w-50 halves it's size-->
-                    <img class="img-fluid w-60 d-none d-sm-block"
-                        src="{{ url_for('static',filename='img/showcase.svg') }}" alt="Put in email">
+                <div class="col-md">
+                    <!--Simply add responsive image-->
+                    <img src="{{ url_for('static',filename='img/danger.png') }}" height="75%" width="75%"
+                        class="img-fluid" alt="danger logo">
                 </div>
             </div>
         </div>
-
     </section>
+    {% endif %}
+    {% if n < 0.5 %}
+    <section id="learn" class="p-5 bg-success text-light">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <!--md screen after that collapses-->
 
+                <div class="col-md p-5">
+                    <h2>NOT SPAM</h2>
+                    <p class="lead">
+                        Model predicts that there is <span class="text-warning fw-bold"> {{n[0][0]}}</span>  precent chance that the previously 
+                        entered message is a spam
+                        
+                    </p>
+                    <p>
+                        Spam is any kind of unwanted, unsolicited digital communication that gets sent out in bulk.
+                       
+                    </p>
+                </div>
+                <div class="col-md">
+                    <!--Simply add responsive image-->
+                    <img src="{{ url_for('static',filename='img/success.png') }}" height="75%" width="75%"
+                        class="img-fluid" alt="success logo">
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
     <!--Enter Spam Message-->
     <section class="bg-primary text-light px-5 py-2 ">
-        <div class="row m-5 ">
-            <!--We use flexbox, d-md-flex (we don't want flexbox to kick in until it is medium screen size)-->
+        <div class="row m-5">
+            <!--We use flexbox,  (we don't want flexbox to kick in until it is medium screen size)-->
             <!--Justify content between, distribute extra space between-->
             <!--Align items center use to align items in ceter-->
-            <div class="col-md">
+            <div class="col">
                 <!--Margin bottom 3-->
                 <!--We don't want margin for medium screens so mb-md-0 (margin for medium screen =0)-->
                 <!-- <h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3> -->
@@ -120,7 +133,7 @@
                     <input class="btn btn-dark btn-lg mt-2" type="submit"></input>
                 </form>
             </div>
-        </div>
+    </div>
     </section>
 
     <!--Boxes-->
