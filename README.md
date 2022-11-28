@@ -4,6 +4,7 @@
 
 * LSTM is implemented in tensorflow.
 * Deployed on Heroku.
+* Flask is used.
 
 ### SPAM Detected
 
