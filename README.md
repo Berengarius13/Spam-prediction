@@ -1,6 +1,6 @@
 # Spam-prediction
 
-#### [LINK](https://spam-predictionn.herokuapp.com/)
+### [spamdetect.live](www.spamdetect.live)
 
 * LSTM is implemented in tensorflow.
 * Deployed on Heroku.
