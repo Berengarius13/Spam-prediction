@@ -1,10 +1,12 @@
 # Spam-prediction
 
-### [spamdetect.live](www.spamdetect.live)
+### [spamdetect.live](www.spamdetect.live) 
 
-* LSTM is implemented in tensorflow.
-* Deployed on Heroku.
-* Flask is used.
+* Your go-to website for email spam prediction.
+* A deep learning web application using Python Flask.
+* Utilizing a LSTM-based model.
+* For more information checkout the [Link](https://www.spamdetect.live/#questions)
+
 
 ### SPAM Detected
 
