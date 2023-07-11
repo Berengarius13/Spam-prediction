@@ -1,11 +1,6 @@
-# Spam-prediction
+# Spam Guard
 
-### [spamdetect.live](www.spamdetect.live) 
-
-* Your go-to website for email spam prediction.
-* A deep learning web application using Python Flask.
-* Utilizing a LSTM-based model.
-* For more information checkout the [Link](https://www.spamdetect.live/#questions)
+Your AI-powered Email Spam Predictor. Say goodbye to inbox clutter with our _LSTM-based model_. Enjoy accurate spam classification and a clutter-free inbox. Try it now and reclaim control over your email experience.
 
 
 ### SPAM Detected
