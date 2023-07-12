@@ -1,6 +1,6 @@
 # Spam Guard
 
-Your AI-powered Email Spam Predictor. Say goodbye to inbox clutter with our _LSTM-based model_. Enjoy accurate spam classification and a clutter-free inbox. Try it now and reclaim control over your email experience.
+Your AI-powered Email Spam Predictor. Say goodbye to inbox clutter with our _LSTM-based_ deep learning model. Enjoy accurate spam classification and a clutter-free inbox. Try it now and reclaim control over your email experience.
 
 
 ### SPAM Detected
